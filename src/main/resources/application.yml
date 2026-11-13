@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: agent-study
+  main:
+    web-application-type: servlet   # ?? servlet, ??????? SseEmitter
+  mvc:
+    async:
+      request-timeout: 600000       # ????(SseEmitter?)??(ms)
+  # ========== Spring AI ??(Day3 Function Calling ?) ==========
+  # OpenAI starter ????? ChatClient/ChatModel, ????? OpenAI ????
+  ai:
+    openai:
+      base-url: http://127.0.0.1:1234
+      api-key: ${AI_API_KEY:sk-1234}
+      chat:
+        options:
+          model: huihui-qwen3.5-9b-abliterated-mlx
+          temperature: 0.7
+
+server:
+  port: 8567
+  # Tomcat ????: ?????/??????, ????????
+  tomcat:
+    connection-timeout: 600000          # ??????(ms), ?? 20s ??
+    keep-alive-timeout: 600000          # keep-alive ????(ms)
+
+logging:
+  level:
+    com.zero.ai.agentstudy: INFO
